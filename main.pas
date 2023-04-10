@@ -7,7 +7,7 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   ExtCtrls, Menus, Buttons, MaskEdit, Spin, LazSerial, IniFiles, StrUtils,
-  apropos, Controls.SegmentDisplay, LazSynaSer;
+  apropos, Controls.SegmentDisplay, LazSynaSer, DefaultTranslator;
 
 type
 
@@ -238,10 +238,15 @@ procedure TFMain.btnFREQClick(Sender: TObject);
 var
   i: integer;
 begin
+  if eFreq.Text = emptyStr then
+  begin
+    showmessage('Veuillez saisir une fréquence en Khz sans décimales');
+    exit;
+  end;
   i := StrToInt(eFreq.Text);
   if (i < 250) or (i > 30000) then
   begin
-    ShowMessage('La fréquence doit être comprise #13 entre 0,250 Mhz et 30 Mhz');
+    ShowMessage('La fréquence doit être comprise' +  #13 + 'entre 0,250 Mhz et 30 Mhz');
     exit;
   end;
   if eFreq.Text <> emptyStr then
