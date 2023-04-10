@@ -1,0 +1,129 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tfmain.btnchan.hint
+msgid "Changer de canal"
+msgstr "Change channel"
+
+#: tfmain.btnfreq.hint
+msgid "Envoyer la fréquence"
+msgstr "Send frequency"
+
+#: tfmain.btnmode.hint
+msgid "Changer de mode"
+msgstr "Change mode"
+
+#: tfmain.caption
+msgid "Codan Remote"
+msgstr ""
+
+#: tfmain.cbmode.hint
+msgid "Mode (USB LSB ou AM) selon paramètres du canal"
+msgstr "Mode (USB LSB or AM) depending from channel settings"
+
+#: tfmain.cbmode.text
+msgctxt "tfmain.cbmode.text"
+msgid "USB"
+msgstr ""
+
+#: tfmain.cbmute.text
+msgid "VOICE"
+msgstr ""
+
+#: tfmain.chandisplay.caption
+msgid "400"
+msgstr ""
+
+#: tfmain.echan.hint
+msgid "Numéro du canal"
+msgstr "Channel number"
+
+#: tfmain.efreq.hint
+msgid "Fréquence à envoyer au Codan en Khz sans décimales"
+msgstr ""
+
+#: tfmain.infodisplay.caption
+msgid "RX-TX"
+msgstr ""
+
+#: tfmain.label1.caption
+msgid "FREQ="
+msgstr ""
+
+#: tfmain.label2.caption
+msgid "CHAN="
+msgstr ""
+
+#: tfmain.label3.caption
+msgid "MODE="
+msgstr ""
+
+#: tfmain.label4.caption
+msgid "MUTE="
+msgstr ""
+
+#: tfmain.mapropos.caption
+msgid "A propos de Codan Remote"
+msgstr "About Codan Remote"
+
+#: tfmain.mcics.caption
+msgid "CICS version 2"
+msgstr ""
+
+#: tfmain.mcics.hint
+msgid "décocher pour utiliser un Codan NGT ou autre utilisant CICS version > 3"
+msgstr "Uncheck to use Codan NGT or other using CICS version > 3"
+
+#: tfmain.megal.caption
+msgid "Commandes Codan en  entrée utilise \"=\""
+msgstr "Codan input commands use \"=\""
+
+#: tfmain.menuitem1.caption
+msgid "Fichier"
+msgstr "File"
+
+#: tfmain.menuitem3.caption
+msgid "Paramètres"
+msgstr "Settings"
+
+#: tfmain.mhelp.caption
+msgid "?"
+msgstr "?"
+
+#: tfmain.modedisplay.caption
+msgctxt "tfmain.modedisplay.caption"
+msgid "USB"
+msgstr ""
+
+#: tfmain.mparamcodan.caption
+msgid "Port série vers le Codan"
+msgstr ""
+
+#: tfmain.mparamsource.caption
+msgid "Port série pour l'entrée des commandes"
+msgstr ""
+
+#: tfmain.mprotocoleyeasu.caption
+msgid "Protocole Yeasu en entrée"
+msgstr "Use Yeasu protocol for input commands"
+
+#: tfmain.mquitter.caption
+msgid "Quitter"
+msgstr "Exit"
+
+#: tfmain.speedbutton1.hint
+msgid "Effacer la fréquence "
+msgstr "Clear frequency"
+
+#: tfmain.statusbar1.panels[0].text
+msgid "Source"
+msgstr ""
+
+#: tfmain.statusbar1.panels[1].text
+msgid "Codan"
+msgstr ""
+
+#: tfmain.statusbar1.panels[2].text
+msgid "FREQ"
+msgstr ""
+
