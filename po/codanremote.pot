@@ -1,0 +1,129 @@
+msgid ""
+msgstr "Content-Type: text/plain; charset=UTF-8"
+
+#: tfmain.btnchan.hint
+msgid "Changer de canal"
+msgstr ""
+
+#: tfmain.btnfreq.hint
+msgid "Envoyer la fréquence"
+msgstr ""
+
+#: tfmain.btnmode.hint
+msgid "Changer de mode"
+msgstr ""
+
+#: tfmain.caption
+msgid "Codan Remote"
+msgstr ""
+
+#: tfmain.cbmode.hint
+msgid "Mode (USB LSB ou AM) selon paramètre du canal"
+msgstr ""
+
+#: tfmain.cbmode.text
+msgctxt "tfmain.cbmode.text"
+msgid "USB"
+msgstr ""
+
+#: tfmain.cbmute.text
+msgid "VOICE"
+msgstr ""
+
+#: tfmain.chandisplay.caption
+msgid "400"
+msgstr ""
+
+#: tfmain.echan.hint
+msgid "Numéro du canal"
+msgstr ""
+
+#: tfmain.efreq.hint
+msgid "Fréquence à envoyer au Codan en Khz sans décimales"
+msgstr ""
+
+#: tfmain.infodisplay.caption
+msgid "RX-TX"
+msgstr ""
+
+#: tfmain.label1.caption
+msgid "FREQ="
+msgstr ""
+
+#: tfmain.label2.caption
+msgid "CHAN="
+msgstr ""
+
+#: tfmain.label3.caption
+msgid "MODE="
+msgstr ""
+
+#: tfmain.label4.caption
+msgid "MUTE="
+msgstr ""
+
+#: tfmain.mapropos.caption
+msgid "A propos de Codan Remote"
+msgstr ""
+
+#: tfmain.mcics.caption
+msgid "CICS version 2"
+msgstr ""
+
+#: tfmain.mcics.hint
+msgid "décocher pour utiliser un Codan NGT ou autre utilisant CICS version > 3"
+msgstr ""
+
+#: tfmain.megal.caption
+msgid "Commandes Codan en  entrée utilise \"=\""
+msgstr ""
+
+#: tfmain.menuitem1.caption
+msgid "Fichier"
+msgstr ""
+
+#: tfmain.menuitem3.caption
+msgid "Paramètres"
+msgstr ""
+
+#: tfmain.mhelp.caption
+msgid "?"
+msgstr ""
+
+#: tfmain.modedisplay.caption
+msgctxt "tfmain.modedisplay.caption"
+msgid "USB"
+msgstr ""
+
+#: tfmain.mparamcodan.caption
+msgid "Port série vers le Codan"
+msgstr ""
+
+#: tfmain.mparamsource.caption
+msgid "Port série pour l'entrée des commandes"
+msgstr ""
+
+#: tfmain.mprotocoleyeasu.caption
+msgid "Protocole Yeasu en entrée"
+msgstr ""
+
+#: tfmain.mquitter.caption
+msgid "Quitter"
+msgstr ""
+
+#: tfmain.speedbutton1.hint
+msgid "Effacer la fréquence "
+msgstr ""
+
+#: tfmain.statusbar1.panels[0].text
+msgid "Source"
+msgstr ""
+
+#: tfmain.statusbar1.panels[1].text
+msgid "Codan"
+msgstr ""
+
+#: tfmain.statusbar1.panels[2].text
+msgid "FREQ"
+msgstr ""
+
