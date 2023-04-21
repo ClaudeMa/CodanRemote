@@ -7,7 +7,8 @@ interface
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   ExtCtrls, Menus, Buttons, MaskEdit, Spin, LazSerial, IniFiles, StrUtils,
-  apropos, Controls.SegmentDisplay, LazSynaSer, DefaultTranslator;
+  apropos, Controls.SegmentDisplay, LazSynaSer, UniqueInstance,
+  DefaultTranslator;
 
 type
 
@@ -46,6 +47,7 @@ type
     btnMODE: TSpeedButton;
     SpeedButton1: TSpeedButton;
     StatusBar1: TStatusBar;
+    UniqueInstance1: TUniqueInstance;
     procedure btnCHANClick(Sender: TObject);
     procedure btnFREQClick(Sender: TObject);
     procedure btnMODE1Click(Sender: TObject);
@@ -69,6 +71,8 @@ type
     procedure serSourceStatus(Sender: TObject; Reason: THookSerialReason;
       const Value: string);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure UniqueInstance1OtherInstance(Sender: TObject;
+      ParamCount: Integer; const Parameters: array of String);
   private
     iniFile: TIniFile;
     commands: TStringList;
@@ -215,6 +219,12 @@ end;
 procedure TFMain.SpeedButton1Click(Sender: TObject);
 begin
   eFreq.Clear;
+end;
+
+procedure TFMain.UniqueInstance1OtherInstance(Sender: TObject;
+  ParamCount: Integer; const Parameters: array of String);
+begin
+  showmessage('L''application est déjà en cours d''execution.');
 end;
 
 procedure TFMain.FormCreate(Sender: TObject);
@@ -442,11 +452,16 @@ begin
       begin
         if length(command) = length('FREQ') then
         begin
-          sersource.WriteData('FREQ: 7074 RX/TX' + #13#10);
+          sersource.WriteData('FREQ: ' + frequenceDisplay.Text + ' ' + infoDisplay.Caption + ' RX/TX' + #13#10);
           exit;
         end;
-        command := stringReplace(command, '.', DecimalSeparator, [rfReplaceAll]);
+        command := stringReplace(command, '.', DefaultFormatSettings.DecimalSeparator, [rfReplaceAll]);
+        try
         frequency := StrToFloat(trim(ExtractWord(2, command, separatorSign)));
+        except
+          ShowMessage('Une erreur est survenue lors de la convertion de la commande.' + #13 + 'Vérifiez les paramètres reçus depuis le logiciel source');
+          exit;
+        end;
         if CICSV2 then
         begin
           cmd := 'FREQ=' + IntToStr(trunc(frequency));

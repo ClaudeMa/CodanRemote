@@ -524,4 +524,11 @@ object FMain: TFMain
     Left = 304
     Top = 56
   end
+  object UniqueInstance1: TUniqueInstance
+    Enabled = True
+    Identifier = 'CodanRemote'
+    OnOtherInstance = UniqueInstance1OtherInstance
+    Left = 224
+    Top = 96
+  end
 end
