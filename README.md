@@ -36,3 +36,6 @@ Exemple et contenu de fichier de liste
 "10";"28.350";"10m 28.000 - 29.700";"U"
 
 
+---
+
+[Aide CICS V 3.2](docs/CICS_Help-1.pdf).
