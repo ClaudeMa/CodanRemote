@@ -1,8 +1,8 @@
 # CodanRemote
 
-Utilitaire de pilotage des postes Codan 93xx et autre moèles utilisant le protocole CICS V 2 par le port série
+Utilitaire de pilotage des postes Codan 93xx et autres modèles utilisant le protocole CICS V 2 par le port série  
 Conversion des commandes CICS V3 vers CICS V2.1 envoyé par certains logiciel (Winlink express, Winlink tri-mode et Airmail)  
-Conversion des commandes envoyés sur le port "remote" des modems pactor SCS et SWISS-PTCII lorsqu'il utilisent le mode Codan.
+Conversion des commandes envoyés sur le port "remote" des modems pactor SCS et SWISS-PTCII lorsqu'ils utilisent le mode Codan.
 
 ![ecran_principal](docs/screenshot.png)  
 Écran principal
