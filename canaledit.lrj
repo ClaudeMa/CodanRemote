@@ -1,0 +1,17 @@
+{"version":1,"strings":[
+{"hash":198825052,"name":"tfcanaledit.caption","sourcebytes":[69,100,105,116,105,111,110,32,99,97,110,97,108],"value":"Edition canal"},
+{"hash":157765212,"name":"tfcanaledit.ecanal.hint","sourcebytes":[78,117,109,195,169,114,111,32,100,117,32,99,97,110,97,108],"value":"Num\u00E9ro du canal"},
+{"hash":122574682,"name":"tfcanaledit.label1.caption","sourcebytes":[78,117,109,195,169,114,111,32,100,117,32,99,97,110,97,108,32,58],"value":"Num\u00E9ro du canal :"},
+{"hash":240645770,"name":"tfcanaledit.efrequence.hint","sourcebytes":[70,114,195,169,113,117,101,110,99,101,32,101,110,32,75,104,122],"value":"Fr\u00E9quence en Khz"},
+{"hash":73776282,"name":"tfcanaledit.label2.caption","sourcebytes":[70,114,195,169,113,117,101,110,99,101,32,40,75,104,122,41,32,58],"value":"Fr\u00E9quence (Khz) :"},
+{"hash":5404860,"name":"tfcanaledit.label3.caption","sourcebytes":[76,97,98,101,108],"value":"Label"},
+{"hash":237657824,"name":"tfcanaledit.elabel.hint","sourcebytes":[108,97,98,101,108,32,100,117,32,99,97,110,97,108,32],"value":"label du canal "},
+{"hash":111311036,"name":"tfcanaledit.elabel.text","sourcebytes":[101,76,97,98,101,108],"value":"eLabel"},
+{"hash":128219538,"name":"tfcanaledit.cbmode.hint","sourcebytes":[77,111,100,101,58,32,85,32,61,32,85,83,66,44,32,76,32,61,32,76,83,66,44,32,85,76,32,61,32,85,83,66,47,76,83,66],"value":"Mode: U = USB, L = LSB, UL = USB/LSB"},
+{"hash":85,"name":"tfcanaledit.cbmode.text","sourcebytes":[85],"value":"U"},
+{"hash":88450874,"name":"tfcanaledit.label4.caption","sourcebytes":[77,111,100,101,32,58],"value":"Mode :"},
+{"hash":8593554,"name":"tfcanaledit.btnannule.hint","sourcebytes":[65,110,110,117,108,101,114,32,101,116,32,113,117,105,116,116,101,114],"value":"Annuler et quitter"},
+{"hash":139838082,"name":"tfcanaledit.btnannule.caption","sourcebytes":[65,110,110,117,108,101,114],"value":"Annuler"},
+{"hash":198218434,"name":"tfcanaledit.btnenregsitre.hint","sourcebytes":[69,110,114,101,103,105,115,116,114,101,114,32,108,101,32,99,97,110,97,108,32,101,116,32,113,117,105,116,116,101,114],"value":"Enregistrer le canal et quitter"},
+{"hash":239526002,"name":"tfcanaledit.btnenregsitre.caption","sourcebytes":[69,110,114,101,103,105,115,116,114,101,114],"value":"Enregistrer"}
+]}

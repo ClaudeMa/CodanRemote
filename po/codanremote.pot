@@ -1,6 +1,234 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
+#: tfcanaledit.btnannule.caption
+msgctxt "tfcanaledit.btnannule.caption"
+msgid "Annuler"
+msgstr ""
+
+#: tfcanaledit.btnannule.hint
+msgid "Annuler et quitter"
+msgstr ""
+
+#: tfcanaledit.btnenregsitre.caption
+msgctxt "tfcanaledit.btnenregsitre.caption"
+msgid "Enregistrer"
+msgstr ""
+
+#: tfcanaledit.btnenregsitre.hint
+msgid "Enregistrer le canal et quitter"
+msgstr ""
+
+#: tfcanaledit.caption
+msgid "Edition canal"
+msgstr ""
+
+#: tfcanaledit.cbmode.hint
+msgid "Mode: U = USB, L = LSB, UL = USB/LSB"
+msgstr ""
+
+#: tfcanaledit.cbmode.text
+msgid "U"
+msgstr ""
+
+#: tfcanaledit.ecanal.hint
+msgctxt "tfcanaledit.ecanal.hint"
+msgid "Numéro du canal"
+msgstr ""
+
+#: tfcanaledit.efrequence.hint
+msgid "Fréquence en Khz"
+msgstr ""
+
+#: tfcanaledit.elabel.hint
+msgid "label du canal "
+msgstr ""
+
+#: tfcanaledit.elabel.text
+msgctxt "tfcanaledit.elabel.text"
+msgid "eLabel"
+msgstr ""
+
+#: tfcanaledit.label1.caption
+msgid "Numéro du canal :"
+msgstr ""
+
+#: tfcanaledit.label2.caption
+msgid "Fréquence (Khz) :"
+msgstr ""
+
+#: tfcanaledit.label3.caption
+msgctxt "tfcanaledit.label3.caption"
+msgid "Label"
+msgstr ""
+
+#: tfcanaledit.label4.caption
+msgid "Mode :"
+msgstr ""
+
+#: tfimporteliste.btnannule.caption
+msgctxt "tfimporteliste.btnannule.caption"
+msgid "Annuler"
+msgstr ""
+
+#: tfimporteliste.btnimporte.caption
+msgctxt "tfimporteliste.btnimporte.caption"
+msgid "Importer"
+msgstr ""
+
+#: tfimporteliste.caption
+msgid "Importation liste"
+msgstr ""
+
+#: tfimporteliste.cbdelete.caption
+msgctxt "tfimporteliste.cbdelete.caption"
+msgid "Vider la liste avant import"
+msgstr ""
+
+#: tfimporteliste.cbdelete.hint
+msgctxt "tfimporteliste.cbdelete.hint"
+msgid "Tous les canaux existants seront supprimés avant importation"
+msgstr ""
+
+#: tfimporteliste.cbupdate.caption
+msgctxt "tfimporteliste.cbupdate.caption"
+msgid "Mettre à jours les canaux existants"
+msgstr ""
+
+#: tfimporteliste.cbupdate.hint
+msgctxt "tfimporteliste.cbupdate.hint"
+msgid "Les canaux existants seront modifié si présent dans la liste d'importation"
+msgstr ""
+
+#: tfimporteliste.efichier.text
+msgid "eFichier"
+msgstr ""
+
+#: tfimporteliste.label1.caption
+msgctxt "tfimporteliste.label1.caption"
+msgid "Fichier à importer"
+msgstr ""
+
+#: tflistecanaux.btnajoute.caption
+msgctxt "tflistecanaux.btnajoute.caption"
+msgid "Ajouter"
+msgstr ""
+
+#: tflistecanaux.btnajoute.hint
+msgid "Ajoute un canal"
+msgstr ""
+
+#: tflistecanaux.btneffacefrequence.hint
+msgctxt "tflistecanaux.btneffacefrequence.hint"
+msgid "Effacer le texte à rechercher"
+msgstr ""
+
+#: tflistecanaux.btneffacelabel.hint
+msgctxt "tflistecanaux.btneffacelabel.hint"
+msgid "Effacer le texte à rechercher"
+msgstr ""
+
+#: tflistecanaux.btnferme.caption
+msgid "Fermer"
+msgstr ""
+
+#: tflistecanaux.btnferme.hint
+msgid "Ferme la fenêtre"
+msgstr ""
+
+#: tflistecanaux.btnmodifie.caption
+msgctxt "tflistecanaux.btnmodifie.caption"
+msgid "Modifier"
+msgstr ""
+
+#: tflistecanaux.btnmodifie.hint
+msgid "Modifie le canal sélectionné"
+msgstr ""
+
+#: tflistecanaux.btnselection.caption
+msgctxt "tflistecanaux.btnselection.caption"
+msgid "Sélectionner"
+msgstr ""
+
+#: tflistecanaux.btnselection.hint
+msgid "Utilise le canal selectionné pour envoi au Codan"
+msgstr ""
+
+#: tflistecanaux.btnsupprime.caption
+msgctxt "tflistecanaux.btnsupprime.caption"
+msgid "Supprimer"
+msgstr ""
+
+#: tflistecanaux.btnsupprime.hint
+msgid "Supprime le canal sélectionné"
+msgstr ""
+
+#: tflistecanaux.caption
+msgctxt "tflistecanaux.caption"
+msgid "Liste des canaux"
+msgstr ""
+
+#: tflistecanaux.efrequence.text
+msgid "eFrequence"
+msgstr ""
+
+#: tflistecanaux.elabel.text
+msgctxt "tflistecanaux.elabel.text"
+msgid "eLabel"
+msgstr ""
+
+#: tflistecanaux.gridliste.columns[0].title.caption
+msgctxt "tflistecanaux.gridliste.columns[0].title.caption"
+msgid "Numéro"
+msgstr ""
+
+#: tflistecanaux.gridliste.columns[1].title.caption
+msgctxt "tflistecanaux.gridliste.columns[1].title.caption"
+msgid "Fréquence (Khz)"
+msgstr ""
+
+#: tflistecanaux.gridliste.columns[2].title.caption
+msgctxt "tflistecanaux.gridliste.columns[2].title.caption"
+msgid "Label"
+msgstr ""
+
+#: tflistecanaux.gridliste.columns[3].title.caption
+msgctxt "tflistecanaux.gridliste.columns[3].title.caption"
+msgid "Mode"
+msgstr ""
+
+#: tflistecanaux.groupbox1.caption
+msgid "Recherche"
+msgstr ""
+
+#: tflistecanaux.label1.caption
+msgid "Dans la colonne \"Fréquence\" :"
+msgstr ""
+
+#: tflistecanaux.label2.caption
+msgid "Dans la colonne \"Label\" : "
+msgstr ""
+
+#: tflistecanaux.majout.caption
+msgctxt "tflistecanaux.majout.caption"
+msgid "Ajouter"
+msgstr ""
+
+#: tflistecanaux.mmodifie.caption
+msgctxt "tflistecanaux.mmodifie.caption"
+msgid "Modifier"
+msgstr ""
+
+#: tflistecanaux.mselectionne.caption
+msgctxt "tflistecanaux.mselectionne.caption"
+msgid "Selectionner"
+msgstr ""
+
+#: tflistecanaux.msupprime.caption
+msgctxt "tflistecanaux.msupprime.caption"
+msgid "Supprimer"
+msgstr ""
+
 #: tfmain.btnchan.hint
 msgid "Changer de canal"
 msgstr ""
@@ -9,8 +237,16 @@ msgstr ""
 msgid "Envoyer la fréquence"
 msgstr ""
 
+#: tfmain.btnlistecanaux.hint
+msgid "Afficher la liste des canaux"
+msgstr ""
+
 #: tfmain.btnmode.hint
 msgid "Changer de mode"
+msgstr ""
+
+#: tfmain.btnmode1.hint
+msgid "Changer silencieux"
 msgstr ""
 
 #: tfmain.caption
@@ -26,6 +262,10 @@ msgctxt "tfmain.cbmode.text"
 msgid "USB"
 msgstr ""
 
+#: tfmain.cbmute.hint
+msgid "Mode du silencieux"
+msgstr ""
+
 #: tfmain.cbmute.text
 msgid "VOICE"
 msgstr ""
@@ -35,6 +275,7 @@ msgid "400"
 msgstr ""
 
 #: tfmain.echan.hint
+msgctxt "tfmain.echan.hint"
 msgid "Numéro du canal"
 msgstr ""
 
@@ -66,6 +307,10 @@ msgstr ""
 msgid "A propos de Codan Remote"
 msgstr ""
 
+#: tfmain.mcanaux.caption
+msgid "Canaux"
+msgstr ""
+
 #: tfmain.mcics.caption
 msgid "CICS version 2"
 msgstr ""
@@ -78,16 +323,26 @@ msgstr ""
 msgid "Commandes Codan en  entrée utilise \"=\""
 msgstr ""
 
-#: tfmain.menuitem1.caption
-msgid "Fichier"
+#: tfmain.mexport.caption
+msgid "Sauvegarder la liste des canaux"
 msgstr ""
 
-#: tfmain.menuitem3.caption
-msgid "Paramètres"
+#: tfmain.mfichier.caption
+msgctxt "tfmain.mfichier.caption"
+msgid "Fichier"
 msgstr ""
 
 #: tfmain.mhelp.caption
 msgid "?"
+msgstr ""
+
+#: tfmain.mimporte.caption
+msgid "Importer une liste de canaux"
+msgstr ""
+
+#: tfmain.mliste.caption
+msgctxt "tfmain.mliste.caption"
+msgid "Liste des canaux"
 msgstr ""
 
 #: tfmain.modedisplay.caption
@@ -97,6 +352,11 @@ msgstr ""
 
 #: tfmain.mparamcodan.caption
 msgid "Port série vers le Codan"
+msgstr ""
+
+#: tfmain.mparametres.caption
+msgctxt "tfmain.mparametres.caption"
+msgid "Paramètres"
 msgstr ""
 
 #: tfmain.mparamsource.caption

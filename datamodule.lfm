@@ -1,0 +1,46 @@
+object FDataModule: TFDataModule
+  OldCreateOrder = False
+  Height = 204
+  HorizontalOffset = 791
+  VerticalOffset = 442
+  Width = 343
+  object Connection: TZConnection
+    ControlsCodePage = cCP_UTF8
+    AutoEncodeStrings = True
+    Properties.Strings = (
+      'AutoEncodeStrings=True'
+      'controls_cp=CP_UTF8'
+    )
+    Port = 0
+    Database = '/home/claude/codan.db3'
+    Protocol = 'sqlite-3'
+    Left = 16
+    Top = 16
+  end
+  object QueryCanaux: TZQuery
+    Connection = Connection
+    SQL.Strings = (
+      'SELECT * FROM canaux ORDER BY id;'
+    )
+    Params = <>
+    Left = 16
+    Top = 72
+  end
+  object queryFonction: TZQuery
+    Connection = Connection
+    Params = <>
+    Left = 112
+    Top = 72
+  end
+  object dsCanaux: TDataSource
+    DataSet = QueryCanaux
+    Left = 16
+    Top = 136
+  end
+  object tblCanaux: TZTable
+    Connection = Connection
+    TableName = 'canaux'
+    Left = 216
+    Top = 72
+  end
+end

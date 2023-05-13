@@ -8,13 +8,14 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   ExtCtrls, Menus, Buttons, MaskEdit, Spin, LazSerial, IniFiles, StrUtils,
   apropos, Controls.SegmentDisplay, LazSynaSer, UniqueInstance,
-  DefaultTranslator;
+  DefaultTranslator, listeCanaux, DataModule, ImporteListe;
 
 type
 
   { TFMain }
 
   TFMain = class(TForm)
+    btnListeCanaux: TSpeedButton;
     btnFREQ: TSpeedButton;
     btnMODE1: TSpeedButton;
     chanDisplay: TLabel;
@@ -26,6 +27,10 @@ type
     Label3: TLabel;
     Label4: TLabel;
     mEgal: TMenuItem;
+    mCanaux: TMenuItem;
+    mImporte: TMenuItem;
+    mExport: TMenuItem;
+    mListe: TMenuItem;
     mProtocoleYeasu: TMenuItem;
     modeDisplay: TLabel;
     infoDisplay: TLabel;
@@ -34,12 +39,13 @@ type
     mApropos: TMenuItem;
     Panel1: TPanel;
     frequenceDisplay: TSegmentDisplay;
+    SelectDirectoryDialog1: TSelectDirectoryDialog;
     serCodan: TLazSerial;
     serSource: TLazSerial;
-    MainMenu1: TMainMenu;
-    MenuItem1: TMenuItem;
+    MainMenu: TMainMenu;
+    mFichier: TMenuItem;
     mQuitter: TMenuItem;
-    MenuItem3: TMenuItem;
+    mParametres: TMenuItem;
     mParamCodan: TMenuItem;
     mParamSource: TMenuItem;
     eChan: TSpinEdit;
@@ -60,6 +66,9 @@ type
     procedure FormShow(Sender: TObject);
     procedure mAproposClick(Sender: TObject);
     procedure mEgalClick(Sender: TObject);
+    procedure mExportClick(Sender: TObject);
+    procedure mImporteClick(Sender: TObject);
+    procedure mListeClick(Sender: TObject);
     procedure mProtocoleYeasuClick(Sender: TObject);
     procedure mQuitterClick(Sender: TObject);
     procedure mParamSourceClick(Sender: TObject);
@@ -71,8 +80,9 @@ type
     procedure serSourceStatus(Sender: TObject; Reason: THookSerialReason;
       const Value: string);
     procedure SpeedButton1Click(Sender: TObject);
+    procedure btnListeCanauxClick(Sender: TObject);
     procedure UniqueInstance1OtherInstance(Sender: TObject;
-      ParamCount: Integer; const Parameters: array of String);
+      ParamCount: integer; const Parameters: array of string);
   private
     iniFile: TIniFile;
     commands: TStringList;
@@ -173,33 +183,32 @@ procedure TFMain.serCodanRxData(Sender: TObject);
 var
   Data: string;
   command: string;
-  i: integer;
 begin
   Data := '';
   Data := serCodan.ReadData;
-    command := data;
-    if pos('?', command) = 0 then
+  command := Data;
+  if pos('?', command) = 0 then
+  begin
+    if ContainsText(command, 'CICS') then
     begin
-      if ContainsText(command, 'CICS') then
-      begin
-        Caption := Caption + ' (' + command + ')';
-      end;
-      if ContainsText(command, 'FREQ') then
-      begin
-        frequenceDisplay.Text := ExtractWord(2, command, [' ']);
-        infoDisplay.Caption := ExtractWord(3, command, [' ']);
-      end;
-      if ContainsText(command, 'SIDEBAND') then
-      begin
-        modeDisplay.Caption := ExtractWord(2, command, [':']);
-        cbMode.Text := modeDisplay.Caption;
-      end;
-      if ContainsText(command, 'CHAN') then
-      begin
-        chanDisplay.Caption := ExtractWord(2, command, [':']);
-        eChan.Text := trim(chanDisplay.Caption);
-      end;
+      Caption := Caption + ' (' + command + ')';
     end;
+    if ContainsText(command, 'FREQ') then
+    begin
+      frequenceDisplay.Text := ExtractWord(2, command, [' ']);
+      infoDisplay.Caption := ExtractWord(3, command, [' ']);
+    end;
+    if ContainsText(command, 'SIDEBAND') then
+    begin
+      modeDisplay.Caption := ExtractWord(2, command, [':']);
+      cbMode.Text := modeDisplay.Caption;
+    end;
+    if ContainsText(command, 'CHAN') then
+    begin
+      chanDisplay.Caption := ExtractWord(2, command, [':']);
+      eChan.Text := trim(chanDisplay.Caption);
+    end;
+  end;
 end;
 
 procedure TFMain.serSourceStatus(Sender: TObject; Reason: THookSerialReason;
@@ -222,9 +231,9 @@ begin
 end;
 
 procedure TFMain.UniqueInstance1OtherInstance(Sender: TObject;
-  ParamCount: Integer; const Parameters: array of String);
+  ParamCount: integer; const Parameters: array of string);
 begin
-  showmessage('L''application est déjà en cours d''execution.');
+  ShowMessage('L''application est déjà en cours d''execution.');
 end;
 
 procedure TFMain.FormCreate(Sender: TObject);
@@ -250,13 +259,14 @@ var
 begin
   if eFreq.Text = emptyStr then
   begin
-    showmessage('Veuillez saisir une fréquence en Khz sans décimales');
+    ShowMessage('Veuillez saisir une fréquence en Khz sans décimales');
     exit;
   end;
   i := StrToInt(eFreq.Text);
   if (i < 250) or (i > 30000) then
   begin
-    ShowMessage('La fréquence doit être comprise' +  #13 + 'entre 0,250 Mhz et 30 Mhz');
+    ShowMessage('La fréquence doit être comprise' + #13 +
+      'entre 0,250 Mhz et 30 Mhz');
     exit;
   end;
   if eFreq.Text <> emptyStr then
@@ -346,7 +356,7 @@ begin
   begin
     SendData2Codan('VER?');
     getCodanChannel;
-    cbMute.Text:= 'VOICE';
+    cbMute.Text := 'VOICE';
     SendData2Codan('MUTE=VOICE');
   end;
   eFreq.Clear;
@@ -373,6 +383,70 @@ begin
     separatorSign := [' '];
     Inifile.WriteBool('PROTOCOLE', 'Egal', False);
   end;
+end;
+
+procedure TFMain.mExportClick(Sender: TObject);
+var
+  list: TStringList;
+  s: string;
+  flname: string;
+  dir: string;
+begin
+  SelectDirectoryDialog1.InitialDir := GetUserDir;
+
+  if SelectDirectoryDialog1.Execute then
+    dir := SelectDirectoryDialog1.FileName;
+  if dir <> emptyStr then
+    flname := dir + PathDelim + 'export_codan_' + FormatDateTime('ddmmy', now) + '.csv'
+  else
+    exit;
+  try
+    list := TStringList.Create;
+    with FDataModule do
+    begin
+      tblCanaux.Open;
+      tblCanaux.First;
+      list.Add('"ID";"FREQ";"LABEL";"MODE"');
+      while not tblCanaux.EOF do
+      begin
+        s := '"' + tblcanaux.FieldByName('id').AsString + '";"' +
+          tblcanaux.FieldByName('freq').AsString + '";"' +
+          tblcanaux.FieldByName('label').AsString + '";"' +
+          tblcanaux.FieldByName('mode').AsString + '"';
+        list.Add(s);
+        tblCanaux.Next;
+      end;
+      list.SaveToFile(flname);
+      ShowMessage('Sauvegarde réalisée avec succès');
+    end;
+  except
+    ShowMessage('Sauvegarde réalisée avec succès');
+  end;
+end;
+
+procedure TFMain.mImporteClick(Sender: TObject);
+var
+  FImporteListe: TFImporteListe;
+begin
+  FImporteListe := TFImporteListe.Create(self);
+  FImporteListe.ShowModal;
+  FImporteListe.Free;
+end;
+
+procedure TFMain.mListeClick(Sender: TObject);
+var
+  FListeCanaux: TFListeCanaux;
+begin
+  FListeCanaux := TFListeCanaux.Create(self);
+  FlisteCanaux.ShowModal;
+  if FListeCanaux.Canal > 0 then
+  begin
+    echan.Value := FlisteCanaux.canal;
+    sendData2Codan('CHAN=' + eChan.Text);
+    getCodanChannel;
+  end;
+  FlisteCanaux.Free;
+
 end;
 
 procedure TFMain.mProtocoleYeasuClick(Sender: TObject);
@@ -452,14 +526,17 @@ begin
       begin
         if length(command) = length('FREQ') then
         begin
-          sersource.WriteData('FREQ: ' + frequenceDisplay.Text + ' ' + infoDisplay.Caption + ' RX/TX' + #13#10);
+          sersource.WriteData('FREQ: ' + frequenceDisplay.Text + ' ' +
+            infoDisplay.Caption + ' RX/TX' + #13#10);
           exit;
         end;
-        command := stringReplace(command, '.', DefaultFormatSettings.DecimalSeparator, [rfReplaceAll]);
+        command := stringReplace(command, '.', DefaultFormatSettings.DecimalSeparator,
+          [rfReplaceAll]);
         try
-        frequency := StrToFloat(trim(ExtractWord(2, command, separatorSign)));
+          frequency := StrToFloat(trim(ExtractWord(2, command, separatorSign)));
         except
-          ShowMessage('Une erreur est survenue lors de la convertion de la commande.' + #13 + 'Vérifiez les paramètres reçus depuis le logiciel source');
+          ShowMessage('Une erreur est survenue lors de la convertion de la commande.' +
+            #13 + 'Vérifiez les paramètres reçus depuis le logiciel source');
           exit;
         end;
         if CICSV2 then
@@ -637,6 +714,21 @@ begin
   begin
     statusbar1.Panels[0].Text := 'Source non connecté : ' + ser;
   end;
+end;
+
+procedure TFMain.btnListeCanauxClick(Sender: TObject);
+var
+  FListeCanaux: TFListeCanaux;
+begin
+  FListeCanaux := TFListeCanaux.Create(self);
+  FlisteCanaux.ShowModal;
+  if FListeCanaux.Canal > 0 then
+  begin
+    echan.Value := FlisteCanaux.canal;
+    sendData2Codan('CHAN=' + eChan.Text);
+    getCodanChannel;
+  end;
+  FlisteCanaux.Free;
 end;
 
 end.
