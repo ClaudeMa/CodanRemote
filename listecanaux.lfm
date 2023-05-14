@@ -11,7 +11,7 @@ object FListeCanaux: TFListeCanaux
   OnShow = FormShow
   Position = poOwnerFormCenter
   ShowHint = True
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '2.2.4.0'
   object Panel1: TPanel
     Left = 0
     Height = 50
@@ -306,20 +306,20 @@ object FListeCanaux: TFListeCanaux
     Width = 662
     Align = alTop
     Caption = 'Recherche'
-    ClientHeight = 85
+    ClientHeight = 84
     ClientWidth = 658
     TabOrder = 2
     object Label1: TLabel
       Left = 6
-      Height = 17
+      Height = 15
       Top = 8
-      Width = 196
+      Width = 158
       Caption = 'Dans la colonne "Fréquence" :'
       ParentColor = False
     end
     object eFrequence: TEdit
       Left = 208
-      Height = 24
+      Height = 23
       Top = 8
       Width = 152
       OnEnter = eFrequenceEnter
@@ -329,7 +329,7 @@ object FListeCanaux: TFListeCanaux
     end
     object eLabel: TEdit
       Left = 208
-      Height = 24
+      Height = 23
       Top = 48
       Width = 152
       OnEnter = eLabelEnter
@@ -431,9 +431,9 @@ object FListeCanaux: TFListeCanaux
     end
     object Label2: TLabel
       Left = 6
-      Height = 17
+      Height = 15
       Top = 48
-      Width = 168
+      Width = 134
       Caption = 'Dans la colonne "Label" : '
       ParentColor = False
     end

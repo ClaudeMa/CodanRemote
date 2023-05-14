@@ -1,14 +1,14 @@
 object FImporteListe: TFImporteListe
-  Left = 419
+  Left = 806
   Height = 203
-  Top = 259
+  Top = 255
   Width = 320
   Caption = 'Importation liste'
   ClientHeight = 203
   ClientWidth = 320
   OnShow = FormShow
-  Position = poOwnerFormCenter
-  LCLVersion = '2.2.6.0'
+  Position = poDesktopCenter
+  LCLVersion = '2.2.4.0'
   object Panel1: TPanel
     Left = 0
     Height = 43
@@ -111,15 +111,15 @@ object FImporteListe: TFImporteListe
   end
   object Label1: TLabel
     Left = 8
-    Height = 17
+    Height = 15
     Top = 16
-    Width = 115
+    Width = 93
     Caption = 'Fichier à importer'
     ParentColor = False
   end
   object eFichier: TEdit
     Left = 8
-    Height = 24
+    Height = 23
     Top = 52
     Width = 272
     TabOrder = 1
@@ -170,20 +170,20 @@ object FImporteListe: TFImporteListe
   end
   object cbDelete: TCheckBox
     Left = 8
-    Height = 21
+    Height = 19
     Hint = 'Tous les canaux existants seront supprimés avant importation'
     Top = 88
-    Width = 193
+    Width = 154
     Caption = 'Vider la liste avant import'
     OnChange = cbDeleteChange
     TabOrder = 2
   end
   object cbUpdate: TCheckBox
     Left = 8
-    Height = 21
+    Height = 19
     Hint = 'Les canaux existants seront modifié si présent dans la liste d''importation'
     Top = 121
-    Width = 252
+    Width = 198
     Caption = 'Mettre à jours les canaux existants'
     TabOrder = 3
   end

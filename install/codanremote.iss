@@ -2,8 +2,8 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Codan Remote"
-#define MyAppVersion "0.0.1"
-#define MyAppShortVersion "001"
+#define MyAppVersion "0.1.0"
+#define MyAppShortVersion "010"
 #define MyAppPublisher "ADRASEC 63"
 #define MyAppExeName "codanremote.exe"
 #define ladate GetDateTimeString('ddmmyy', '', '');
@@ -34,8 +34,10 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 Source: "..\codanremote.exe"; DestDir: "{app}"; Flags: ignoreversion
 ; NOTE: Don't use "Flags: ignoreversion" on any shared system files
-Source: "..\docs\Installation.pdf"; DestDir: "{app}\docs"
+Source: "..\docs\Installation et utilisation.pdf"; DestDir: "{app}\docs"
 Source: "..\docs\com0com installation.odt"; DestDir: "{app}\docs"
+Source: "..\docs\export_codan_080523.csv"; DestDir: "{app}\docs"
+Source: "..\sqlite3.dll"; DestDir: "{sys}"
 
 [Icons]
 Name: "{group}\{#MyAppName}"; Filename: "{app}\{#MyAppExeName}"

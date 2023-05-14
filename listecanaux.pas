@@ -172,39 +172,6 @@ var
   newDB: boolean = False;
 begin
   mCanal := 0;
-  dbPath := GetUserDir + 'codan.db3';
-  FdataModule.Connection.Disconnect;
-  FdataModule.Connection.Database := dbPath;
-  try
-    newDb := not FileExists(FdataModule.Connection.Database);
-    if newDb then
-    begin
-      if MessageDlg('Question',
-        'la liste des canaux n''a pas été trouvée. Voulez vous en créer une?' +
-        #13, mtConfirmation, [mbYes, mbNo], 0) = mrNo then
-        Close;
-      try
-        FdataModule.Connection.Connect;
-        FdataModule.QueryFonction.SQL.Clear;
-        FdataModule.QueryFonction.SQL.Add('CREATE TABLE "CANAUX"(' +
-          ' "id" Integer NOT NULL PRIMARY KEY,' +
-          ' "freq" numeric(8,2) NOT NULL,' + ' "label" Char(128),' +
-          ' "mode" Char(3) NOT NULL default ''U'');');
-        FdataModule.QueryFonction.ExecSQL;
-        // Creating an index based upon id in the CANAUX Table
-        FdataModule.QueryFonction.SQL.Clear;
-        FdataModule.QueryFonction.SQL.Add(
-          'CREATE UNIQUE INDEX "canaux_id_idx" ON "CANAUX"( "id" );');
-        FdataModule.QueryFonction.ExecSQL;
-      except
-        ShowMessage('La création de la liste a échoué');
-        Close;
-      end;
-    end;
-  except
-    ShowMessage('Impossible de détecter si la liste existe');
-    Close;
-  end;
   eFrequence.Clear;
   eFrequence.OnChange := @eFrequenceChange;
   eLabel.Clear;

@@ -107,6 +107,7 @@ type
     function String2Hex(const Buffer: ansistring): string;
     function Hex2String(const Buffer: string): ansistring;
     function StringtoHex(Data: string): string;
+    function OpenDatabase: boolean;
   public
 
   end;
@@ -360,6 +361,11 @@ begin
     SendData2Codan('MUTE=VOICE');
   end;
   eFreq.Clear;
+  if OpenDatabase = False then
+  begin
+    mCanaux.Enabled := False;
+    btnListeCanaux.Enabled := False;
+  end;
 end;
 
 procedure TFMain.mAproposClick(Sender: TObject);
@@ -417,10 +423,13 @@ begin
         tblCanaux.Next;
       end;
       list.SaveToFile(flname);
+      list.Free;
       ShowMessage('Sauvegarde réalisée avec succès');
     end;
   except
-    ShowMessage('Sauvegarde réalisée avec succès');
+    if assigned(list) then
+      list.Free;
+    ShowMessage('La sauvegarde a échoué');
   end;
 end;
 
@@ -729,6 +738,48 @@ begin
     getCodanChannel;
   end;
   FlisteCanaux.Free;
+end;
+
+function TFMain.OpenDatabase: boolean;
+var
+  newDB: boolean = False;
+  dbPath: String;
+begin
+  dbPath := GetUserDir + 'codan.db3';
+  FdataModule.Connection.Disconnect;
+  FdataModule.Connection.Database := dbPath;
+  try
+    newDb := not FileExists(FdataModule.Connection.Database);
+    if newDb then
+    begin
+      if MessageDlg('Question',
+        'la liste des canaux n''a pas été trouvée. Voulez vous en créer une?' +
+        #13, mtConfirmation, [mbYes, mbNo], 0) = mrNo then
+        Close;
+      try
+        FdataModule.Connection.Connect;
+        FdataModule.QueryFonction.SQL.Clear;
+        FdataModule.QueryFonction.SQL.Add('CREATE TABLE "CANAUX"(' +
+          ' "id" Integer NOT NULL,' + ' "freq" numeric(8,2) NOT NULL,' +
+          ' "label" Char(128),' + ' "mode" Char(3) NOT NULL default ''U'');');
+        FdataModule.QueryFonction.ExecSQL;
+        // Creating an index based upon id in the CANAUX Table
+        //FdataModule.QueryFonction.SQL.Clear;
+        //FdataModule.QueryFonction.SQL.Add(
+        //  'CREATE UNIQUE INDEX "canaux_id_idx" ON "CANAUX"( "id" );');
+        //FdataModule.QueryFonction.ExecSQL;
+        Result := True;
+      except
+        ShowMessage('La création de la liste a échoué.' + #13 +
+          'La fonction "liste des canaux" sera désactivée.');
+        Result := False;
+      end;
+    end;
+  except
+    ShowMessage('Impossible de détecter si la liste existe.' + #13 +
+      'La fonction "liste des canaux" sera désactivée.');
+    Result := False
+  end;
 end;
 
 end.

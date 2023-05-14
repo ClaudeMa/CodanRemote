@@ -6,7 +6,7 @@ object FMain: TFMain
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'Codan Remote'
-  ClientHeight = 179
+  ClientHeight = 186
   ClientWidth = 417
   Menu = MainMenu
   OnCloseQuery = FormCloseQuery
@@ -14,7 +14,7 @@ object FMain: TFMain
   OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.6.0'
+  LCLVersion = '2.2.4.0'
   object Panel1: TPanel
     Left = 0
     Height = 48
@@ -102,8 +102,8 @@ object FMain: TFMain
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Height = 20
-    Top = 159
+    Height = 23
+    Top = 163
     Width = 417
     Panels = <    
       item
@@ -122,7 +122,7 @@ object FMain: TFMain
   end
   object eFreq: TEdit
     Left = 72
-    Height = 24
+    Height = 23
     Hint = 'Fréquence à envoyer au Codan en Khz sans décimales'
     Top = 56
     Width = 152
@@ -179,23 +179,23 @@ object FMain: TFMain
   end
   object Label1: TLabel
     Left = 19
-    Height = 17
+    Height = 15
     Top = 56
-    Width = 47
+    Width = 36
     Caption = 'FREQ='
     ParentColor = False
   end
   object Label2: TLabel
     Left = 19
-    Height = 17
+    Height = 15
     Top = 87
-    Width = 49
+    Width = 42
     Caption = 'CHAN='
     ParentColor = False
   end
   object eChan: TSpinEdit
     Left = 72
-    Height = 24
+    Height = 23
     Hint = 'Numéro du canal'
     Top = 88
     Width = 98
@@ -295,19 +295,19 @@ object FMain: TFMain
   end
   object Label3: TLabel
     Left = 19
-    Height = 17
+    Height = 15
     Top = 118
-    Width = 52
+    Width = 42
     Caption = 'MODE='
     ParentColor = False
   end
   object cbMode: TComboBox
     Left = 72
-    Height = 26
+    Height = 23
     Hint = 'Mode (USB LSB ou AM) selon paramètre du canal'
     Top = 120
     Width = 98
-    ItemHeight = 0
+    ItemHeight = 15
     ItemIndex = 0
     Items.Strings = (
       'USB'
@@ -364,19 +364,19 @@ object FMain: TFMain
   end
   object Label4: TLabel
     Left = 232
-    Height = 17
+    Height = 15
     Top = 120
-    Width = 49
+    Width = 40
     Caption = 'MUTE='
     ParentColor = False
   end
   object cbMute: TComboBox
     Left = 280
-    Height = 26
+    Height = 23
     Hint = 'Mode du silencieux'
     Top = 120
     Width = 100
-    ItemHeight = 0
+    ItemHeight = 15
     ItemIndex = 1
     Items.Strings = (
       'OFF'
@@ -554,7 +554,6 @@ object FMain: TFMain
     SynSer.ConvertLineEnd = True
     SynSer.AtTimeout = 1000
     SynSer.InterPacketTimeout = True
-    SynSer.NonBlock = False
     Device = 'COM1'
     RcvLineCRLF = True
     OnRxData = serCodanRxData
@@ -580,7 +579,6 @@ object FMain: TFMain
     SynSer.ConvertLineEnd = True
     SynSer.AtTimeout = 1000
     SynSer.InterPacketTimeout = True
-    SynSer.NonBlock = False
     Device = 'COM2'
     RcvLineCRLF = False
     OnRxData = serSourceRxData

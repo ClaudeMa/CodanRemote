@@ -117,6 +117,8 @@ begin
         end;
       end;
     except
+      if assigned(list) then
+        list.Free;
       ShowMessage('L''importation a echoué');
       exit
     end;
@@ -124,11 +126,11 @@ begin
   if nb = 0 then
     ShowMessage('Aucun canal importé')
   else if nb = 1 then
-    ShowMessage('1 canal importé sur ' + IntToStr(i))
+    ShowMessage('1 canal importé sur ' + IntToStr(nb))
   else
-    ShowMessage(IntToStr(nb) + ' canaux importés sur ' + IntToStr(i));
+    ShowMessage(IntToStr(nb) + ' canaux importés sur ' + IntToStr(nb));
   list.Free;
-  close;
+  Close;
 end;
 
 procedure TFImporteListe.cbDeleteChange(Sender: TObject);
@@ -159,11 +161,11 @@ procedure TFImporteListe.Modifie(row: TStringArray);
 begin
   with fDataModule do
   begin
-    tblCanaux.Edit;
-    tblCanaux.FieldByName('freq').AsFloat := strToFloat(row[1]);
-    tblCanaux.FieldByName('label').AsString := row[2];
-    tblCanaux.FieldByName('mode').AsString := row[3];
-    tblCanaux.Post;
+    queryFonction.SQL.Clear;
+    queryFonction.SQL.Add('UPDATE canaux SET freq = ''' + row[1] +
+      ''', label = ''' + row[2] + ''', ' + 'mode = ''' + row[3] +
+      ''' WHERE id = ' + row[0] + ';');
+    queryFonction.ExecSQL;
   end;
 end;
 
@@ -173,7 +175,8 @@ begin
   begin
     tblCanaux.Insert;
     tblCanaux.FieldByName('id').AsInteger := StrToInt(row[0]);
-    tblCanaux.FieldByName('freq').AsFloat := strToFloat(row[1]);
+    tblCanaux.FieldByName('freq').AsFloat :=
+      strToFloat(StringReplace(row[1], '.', ',', [rfReplaceAll]));
     tblCanaux.FieldByName('label').AsString := row[2];
     tblCanaux.FieldByName('mode').AsString := row[3];
     tblCanaux.Post;
