@@ -202,7 +202,7 @@ begin
     if ContainsText(command, 'SIDEBAND') then
     begin
       modeDisplay.Caption := ExtractWord(2, command, [':']);
-      cbMode.Text := modeDisplay.Caption;
+      cbMode.Text := trim(modeDisplay.Caption);
     end;
     if ContainsText(command, 'CHAN') then
     begin
