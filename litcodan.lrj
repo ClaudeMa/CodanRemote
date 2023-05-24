@@ -1,0 +1,10 @@
+{"version":1,"strings":[
+{"hash":83937038,"name":"tflitcodan.caption","sourcebytes":[65,99,113,117,105,115,105,116,105,111,110,32,100,101,115,32,99,97,110,97,117,120,32,100,101,112,117,105,115,32,108,101,32,67,111,100,97,110],"value":"Acquisition des canaux depuis le Codan"},
+{"hash":152981666,"name":"tflitcodan.btnaquerir.caption","sourcebytes":[65,99,113,117,195,169,114,105,114],"value":"Acqu\u00E9rir"},
+{"hash":80516034,"name":"tflitcodan.btnfermer.caption","sourcebytes":[70,101,114,109,101,114],"value":"Fermer"},
+{"hash":97116383,"name":"tflitcodan.gridliste.columns[0].title.caption","sourcebytes":[78,117,109,195,169,114,111],"value":"Num\u00E9ro"},
+{"hash":128214457,"name":"tflitcodan.gridliste.columns[1].title.caption","sourcebytes":[70,114,195,169,113,117,101,110,99,101,32,40,75,104,122,41],"value":"Fr\u00E9quence (Khz)"},
+{"hash":5404860,"name":"tflitcodan.gridliste.columns[2].title.caption","sourcebytes":[76,97,98,101,108],"value":"Label"},
+{"hash":345509,"name":"tflitcodan.gridliste.columns[3].title.caption","sourcebytes":[77,111,100,101],"value":"Mode"},
+{"hash":246683472,"name":"tflitcodan.label1.caption","sourcebytes":[68,195,169,109,97,114,114,101,114,32,97,117,32,99,97,110,97,108,32],"value":"D\u00E9marrer au canal "}
+]}

@@ -129,6 +129,7 @@ msgid "Effacer le texte à rechercher"
 msgstr ""
 
 #: tflistecanaux.btnferme.caption
+msgctxt "tflistecanaux.btnferme.caption"
 msgid "Fermer"
 msgstr ""
 
@@ -229,6 +230,43 @@ msgctxt "tflistecanaux.msupprime.caption"
 msgid "Supprimer"
 msgstr ""
 
+#: tflitcodan.btnaquerir.caption
+msgid "Acquérir"
+msgstr ""
+
+#: tflitcodan.btnfermer.caption
+msgctxt "tflitcodan.btnfermer.caption"
+msgid "Fermer"
+msgstr ""
+
+#: tflitcodan.caption
+msgid "Acquisition des canaux depuis le Codan"
+msgstr ""
+
+#: tflitcodan.gridliste.columns[0].title.caption
+msgctxt "tflitcodan.gridliste.columns[0].title.caption"
+msgid "Numéro"
+msgstr ""
+
+#: tflitcodan.gridliste.columns[1].title.caption
+msgctxt "tflitcodan.gridliste.columns[1].title.caption"
+msgid "Fréquence (Khz)"
+msgstr ""
+
+#: tflitcodan.gridliste.columns[2].title.caption
+msgctxt "tflitcodan.gridliste.columns[2].title.caption"
+msgid "Label"
+msgstr ""
+
+#: tflitcodan.gridliste.columns[3].title.caption
+msgctxt "tflitcodan.gridliste.columns[3].title.caption"
+msgid "Mode"
+msgstr ""
+
+#: tflitcodan.label1.caption
+msgid "Démarrer au canal "
+msgstr ""
+
 #: tfmain.btnchan.hint
 msgid "Changer de canal"
 msgstr ""
@@ -301,6 +339,14 @@ msgstr ""
 
 #: tfmain.label4.caption
 msgid "MUTE="
+msgstr ""
+
+#: tfmain.lbllabel.caption
+msgid "lblLabel"
+msgstr ""
+
+#: tfmain.macquerir.caption
+msgid "Acquérir les canaux depuis le Codan"
 msgstr ""
 
 #: tfmain.mapropos.caption

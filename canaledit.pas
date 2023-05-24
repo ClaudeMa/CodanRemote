@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, Spin, StdCtrls,
-  ExtCtrls, Buttons, dataModule, db;
+  ExtCtrls, Buttons, dataModule, DB;
 
 type
 
@@ -38,13 +38,16 @@ type
     procedure ecanalChange(Sender: TObject);
     procedure eFrequenceChange(Sender: TObject);
     procedure eLabelChange(Sender: TObject);
+    procedure eLabelDblClick(Sender: TObject);
     procedure FormShow(Sender: TObject);
   private
     mCanal: Tcanal;
+    mNouveau: boolean;
     isChanged: boolean;
     function CanalExists(canal: integer): boolean;
   public
     property Canal: TCanal read mCanal write mCanal;
+    property Nouveau: boolean write mNouveau;
   end;
 
 var
@@ -61,10 +64,11 @@ begin
   if isChanged then
   begin
     if MessageDlg('Question',
-      'le canal a été modifié. Voulez vous quitter sans entegistrer?' +
-      #13, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
-      Close;
+      'le canal a été modifié. Voulez vous quitter sans enregistrer?' +
+      #13, mtConfirmation, [mbYes, mbNo], 0) = mrNo then
+      exit;
   end;
+  Close;
 end;
 
 procedure TFCanalEdit.btnEnregsitreClick(Sender: TObject);
@@ -80,10 +84,22 @@ begin
   lCanal.Id := eCanal.Value;
   if (mCanal.Id = 0) and (CanalExists(eCanal.Value)) then
   begin
-    ShowMessage('Ce canal avec le même numéro existe. Modifier le numéro');
+    ShowMessage('Un canal avec le même numéro existe. Modifiez le numéro');
     eCanal.SetFocus;
     exit;
   end;
+
+  if (mNouveau = true) and (CanalExists(eCanal.Value)) then
+  begin
+    if MessageDlg('Question',
+      'Un canal avec le même numéro existe. Voulez vous le remplacer?',
+      mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+      mNouveau := False
+    else
+      exit;
+  end;
+
+
 
   if elabel.Text = emptyStr then
   begin
@@ -95,16 +111,14 @@ begin
   lCanal.Freq := eFrequence.Value;
   with FdataModule do
   begin
-    if mcanal.Id = 0 then
+    if (mcanal.Id = 0) or (mNouveau) then
       sqltexte := 'INSERT INTO canaux VALUES (' + IntToStr(lCanal.Id) +
-        ', '' ' + floatToStr(lCanal.Freq) +
-        ''', ''' + lCanal.Lab +
-        ''', ''' + lCanal.Mode + ''');'
+        ', '' ' + floatToStr(lCanal.Freq) + ''', ''' +
+        lCanal.Lab + ''', ''' + lCanal.Mode + ''');'
     else
       sqlTexte := 'UPDATE canaux set freq = ''' + floatToStr(lCanal.Freq) +
-        ''', ' + 'label = ''' + lCanal.Lab +
-        ''', ' + 'mode = ''' + lCanal.Mode +
-        ''' WHERE id = ' + IntToStr(lCanal.Id) + ';';
+        ''', ' + 'label = ''' + lCanal.Lab + ''', ' + 'mode = ''' +
+        lCanal.Mode + ''' WHERE id = ' + IntToStr(lCanal.Id) + ';';
     queryFonction.SQL.Clear;
     queryFonction.SQl.Add(sqlTexte);
     QueryFonction.ExecSQL;
@@ -133,11 +147,16 @@ begin
   isChanged := True;
 end;
 
+procedure TFCanalEdit.eLabelDblClick(Sender: TObject);
+begin
+  TEdit(sender).SelectAll;
+end;
+
 procedure TFCanalEdit.FormShow(Sender: TObject);
 begin
   if FdataModule.tblCanaux.State = dsInactive then
-  FdataModule.tblCanaux.Open;
-  if mCanal.Id = 0 then
+    FdataModule.tblCanaux.Open;
+  if (mCanal.Id = 0) and (mNouveau = False) then
   begin
     eCanal.Value := 0;
     eFrequence.Value := 250;

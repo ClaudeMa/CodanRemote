@@ -131,6 +131,13 @@
         <HasResources Value="True"/>
         <ResourceBaseClass Value="Form"/>
       </Unit>
+      <Unit>
+        <Filename Value="litcodan.pas"/>
+        <IsPartOfProject Value="True"/>
+        <ComponentName Value="FLitCodan"/>
+        <HasResources Value="True"/>
+        <ResourceBaseClass Value="Form"/>
+      </Unit>
     </Units>
   </ProjectOptions>
   <CompilerOptions>

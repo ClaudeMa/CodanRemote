@@ -6,7 +6,7 @@ object FMain: TFMain
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
   Caption = 'Codan Remote'
-  ClientHeight = 186
+  ClientHeight = 179
   ClientWidth = 417
   Menu = MainMenu
   OnCloseQuery = FormCloseQuery
@@ -14,7 +14,7 @@ object FMain: TFMain
   OnDestroy = FormDestroy
   OnShow = FormShow
   Position = poScreenCenter
-  LCLVersion = '2.2.4.0'
+  LCLVersion = '2.2.6.0'
   object Panel1: TPanel
     Left = 0
     Height = 48
@@ -102,8 +102,8 @@ object FMain: TFMain
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Height = 23
-    Top = 163
+    Height = 20
+    Top = 159
     Width = 417
     Panels = <    
       item
@@ -122,7 +122,7 @@ object FMain: TFMain
   end
   object eFreq: TEdit
     Left = 72
-    Height = 23
+    Height = 24
     Hint = 'Fréquence à envoyer au Codan en Khz sans décimales'
     Top = 56
     Width = 152
@@ -179,28 +179,29 @@ object FMain: TFMain
   end
   object Label1: TLabel
     Left = 19
-    Height = 15
+    Height = 17
     Top = 56
-    Width = 36
+    Width = 47
     Caption = 'FREQ='
     ParentColor = False
   end
   object Label2: TLabel
     Left = 19
-    Height = 15
+    Height = 17
     Top = 87
-    Width = 42
+    Width = 49
     Caption = 'CHAN='
     ParentColor = False
   end
   object eChan: TSpinEdit
     Left = 72
-    Height = 23
+    Height = 24
     Hint = 'Numéro du canal'
     Top = 88
     Width = 98
     MaxValue = 400
     MinValue = 1
+    OnChange = eChanChange
     OnKeyPress = eChanKeyPress
     TabOrder = 3
     Value = 1
@@ -295,19 +296,19 @@ object FMain: TFMain
   end
   object Label3: TLabel
     Left = 19
-    Height = 15
+    Height = 17
     Top = 118
-    Width = 42
+    Width = 52
     Caption = 'MODE='
     ParentColor = False
   end
   object cbMode: TComboBox
     Left = 72
-    Height = 23
+    Height = 26
     Hint = 'Mode (USB LSB ou AM) selon paramètre du canal'
     Top = 120
     Width = 98
-    ItemHeight = 15
+    ItemHeight = 0
     ItemIndex = 0
     Items.Strings = (
       'USB'
@@ -364,19 +365,19 @@ object FMain: TFMain
   end
   object Label4: TLabel
     Left = 232
-    Height = 15
+    Height = 17
     Top = 120
-    Width = 40
+    Width = 49
     Caption = 'MUTE='
     ParentColor = False
   end
   object cbMute: TComboBox
     Left = 280
-    Height = 23
+    Height = 26
     Hint = 'Mode du silencieux'
     Top = 120
     Width = 100
-    ItemHeight = 15
+    ItemHeight = 0
     ItemIndex = 1
     Items.Strings = (
       'OFF'
@@ -475,9 +476,17 @@ object FMain: TFMain
     }
     OnClick = btnListeCanauxClick
   end
+  object lblLabel: TLabel
+    Left = 240
+    Height = 17
+    Top = 88
+    Width = 51
+    Caption = 'lblLabel'
+    ParentColor = False
+  end
   object MainMenu: TMainMenu
-    Left = 336
-    Top = 56
+    Left = 232
+    Top = 144
     object mFichier: TMenuItem
       Caption = 'Fichier'
       object mQuitter: TMenuItem
@@ -527,6 +536,10 @@ object FMain: TFMain
         Caption = 'Importer une liste de canaux'
         OnClick = mImporteClick
       end
+      object mAcquerir: TMenuItem
+        Caption = 'Acquérir les canaux depuis le Codan'
+        OnClick = mAcquerirClick
+      end
     end
     object mHelp: TMenuItem
       Caption = '?'
@@ -554,12 +567,13 @@ object FMain: TFMain
     SynSer.ConvertLineEnd = True
     SynSer.AtTimeout = 1000
     SynSer.InterPacketTimeout = True
+    SynSer.NonBlock = False
     Device = 'COM1'
     RcvLineCRLF = True
     OnRxData = serCodanRxData
     OnStatus = serCodanStatus
-    Left = 368
-    Top = 56
+    Left = 264
+    Top = 144
   end
   object serSource: TLazSerial
     Active = False
@@ -579,21 +593,22 @@ object FMain: TFMain
     SynSer.ConvertLineEnd = True
     SynSer.AtTimeout = 1000
     SynSer.InterPacketTimeout = True
+    SynSer.NonBlock = False
     Device = 'COM2'
     RcvLineCRLF = False
     OnRxData = serSourceRxData
-    Left = 304
-    Top = 56
+    Left = 192
+    Top = 144
   end
   object UniqueInstance1: TUniqueInstance
     Enabled = True
     Identifier = 'CodanRemote'
     OnOtherInstance = UniqueInstance1OtherInstance
-    Left = 384
-    Top = 88
+    Left = 48
+    Top = 136
   end
   object SelectDirectoryDialog1: TSelectDirectoryDialog
-    Left = 216
-    Top = 144
+    Left = 8
+    Top = 136
   end
 end
