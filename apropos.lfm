@@ -9,7 +9,7 @@ object FApropos: TFApropos
   ClientHeight = 363
   ClientWidth = 320
   OnShow = FormShow
-  Position = poOwnerFormCenter
+  Position = poDesktopCenter
   LCLVersion = '2.2.6.0'
   object Image1: TImage
     Left = 10

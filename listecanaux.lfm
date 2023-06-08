@@ -1,7 +1,7 @@
 object FListeCanaux: TFListeCanaux
-  Left = 207
+  Left = 230
   Height = 448
-  Top = 109
+  Top = 396
   Width = 662
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog
@@ -9,7 +9,7 @@ object FListeCanaux: TFListeCanaux
   ClientHeight = 448
   ClientWidth = 662
   OnShow = FormShow
-  Position = poOwnerFormCenter
+  Position = poDesktopCenter
   ShowHint = True
   LCLVersion = '2.2.6.0'
   object Panel1: TPanel

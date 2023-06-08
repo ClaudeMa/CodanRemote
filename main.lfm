@@ -1,7 +1,7 @@
 object FMain: TFMain
-  Left = 587
+  Left = 10
   Height = 206
-  Top = 313
+  Top = 27
   Width = 417
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsToolWindow
@@ -13,7 +13,6 @@ object FMain: TFMain
   OnCreate = FormCreate
   OnDestroy = FormDestroy
   OnShow = FormShow
-  Position = poScreenCenter
   LCLVersion = '2.2.6.0'
   object Panel1: TPanel
     Left = 0
