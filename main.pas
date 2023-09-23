@@ -255,6 +255,10 @@ begin
     serCodan.Close;
     serSource.Close;
     CanClose := True;
+  end
+  else
+  begin
+    CanClose := false;
   end;
 end;
 

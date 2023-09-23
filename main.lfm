@@ -101,8 +101,8 @@ object FMain: TFMain
   end
   object StatusBar1: TStatusBar
     Left = 0
-    Height = 20
-    Top = 159
+    Height = 21
+    Top = 158
     Width = 417
     Panels = <    
       item
@@ -121,7 +121,7 @@ object FMain: TFMain
   end
   object eFreq: TEdit
     Left = 72
-    Height = 24
+    Height = 25
     Hint = 'Fréquence à envoyer au Codan en Khz sans décimales'
     Top = 56
     Width = 152
@@ -194,7 +194,7 @@ object FMain: TFMain
   end
   object eChan: TSpinEdit
     Left = 72
-    Height = 24
+    Height = 25
     Hint = 'Numéro du canal'
     Top = 88
     Width = 98
@@ -303,7 +303,7 @@ object FMain: TFMain
   end
   object cbMode: TComboBox
     Left = 72
-    Height = 26
+    Height = 27
     Hint = 'Mode (USB LSB ou AM) selon paramètre du canal'
     Top = 120
     Width = 98
@@ -372,7 +372,7 @@ object FMain: TFMain
   end
   object cbMute: TComboBox
     Left = 280
-    Height = 26
+    Height = 27
     Hint = 'Mode du silencieux'
     Top = 120
     Width = 100
@@ -477,10 +477,9 @@ object FMain: TFMain
   end
   object lblLabel: TLabel
     Left = 240
-    Height = 17
+    Height = 1
     Top = 88
-    Width = 51
-    Caption = 'lblLabel'
+    Width = 1
     ParentColor = False
   end
   object MainMenu: TMainMenu

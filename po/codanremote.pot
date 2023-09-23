@@ -375,10 +375,6 @@ msgstr ""
 msgid "MUTE="
 msgstr ""
 
-#: tfmain.lbllabel.caption
-msgid "lblLabel"
-msgstr ""
-
 #: tfmain.macquerir.caption
 msgid "Acquérir les canaux depuis le Codan"
 msgstr ""
