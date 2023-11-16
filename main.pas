@@ -8,7 +8,7 @@ uses
   Classes, SysUtils, Forms, Controls, Graphics, Dialogs, StdCtrls, ComCtrls,
   ExtCtrls, Menus, Buttons, MaskEdit, Spin, LazSerial, IniFiles, StrUtils,
   apropos, Controls.SegmentDisplay, LazSynaSer, UniqueInstance,
-  DefaultTranslator, listeCanaux, DataModule, ImporteListe;
+  DefaultTranslator, listeCanaux, DataModule, ImporteListe, litCodan;
 
 type
 
@@ -26,8 +26,10 @@ type
     Label2: TLabel;
     Label3: TLabel;
     Label4: TLabel;
+    lblLabel: TLabel;
     mEgal: TMenuItem;
     mCanaux: TMenuItem;
+    mAcquerir: TMenuItem;
     mImporte: TMenuItem;
     mExport: TMenuItem;
     mListe: TMenuItem;
@@ -58,12 +60,14 @@ type
     procedure btnFREQClick(Sender: TObject);
     procedure btnMODE1Click(Sender: TObject);
     procedure btnMODEClick(Sender: TObject);
+    procedure eChanChange(Sender: TObject);
     procedure eChanKeyPress(Sender: TObject; var Key: char);
     procedure eFreqKeyPress(Sender: TObject; var Key: char);
     procedure FormCloseQuery(Sender: TObject; var CanClose: boolean);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure mAcquerirClick(Sender: TObject);
     procedure mAproposClick(Sender: TObject);
     procedure mEgalClick(Sender: TObject);
     procedure mExportClick(Sender: TObject);
@@ -101,9 +105,9 @@ type
     { Conversion des commandes YEASU en commandes Codan CICS }
     procedure ParseYeasuInputData(Data: string);
 
-    procedure getCodanChannel;
-    procedure openPorts;
-
+    procedure GetCodanChannel;
+    procedure OpenPorts;
+    procedure UpdateLabel(canal: integer);
     function String2Hex(const Buffer: ansistring): string;
     function Hex2String(const Buffer: string): ansistring;
     function StringtoHex(Data: string): string;
@@ -251,6 +255,10 @@ begin
     serCodan.Close;
     serSource.Close;
     CanClose := True;
+  end
+  else
+  begin
+    CanClose := false;
   end;
 end;
 
@@ -292,6 +300,11 @@ procedure TFMain.btnMODEClick(Sender: TObject);
 begin
   sendData2Codan('SB=' + cbMode.Text);
   getCodanChannel;
+end;
+
+procedure TFMain.eChanChange(Sender: TObject);
+begin
+  UpdateLabel(eChan.Value);
 end;
 
 
@@ -366,6 +379,19 @@ begin
     mCanaux.Enabled := False;
     btnListeCanaux.Enabled := False;
   end;
+  UpdateLabel(eChan.Value);
+end;
+
+procedure TFMain.mAcquerirClick(Sender: TObject);
+var
+  FLitCodan: TFLitCodan;
+begin
+  serCodan.Close;
+  FLitCodan := TFLitCodan.Create(self);
+  FLitCodan.ShowModal;
+  FlitCodan.Free;
+  serCodan.Open;
+  GetCodanChannel;
 end;
 
 procedure TFMain.mAproposClick(Sender: TObject);
@@ -743,7 +769,7 @@ end;
 function TFMain.OpenDatabase: boolean;
 var
   newDB: boolean = False;
-  dbPath: String;
+  dbPath: string;
 begin
   dbPath := GetUserDir + 'codan.db3';
   FdataModule.Connection.Disconnect;
@@ -779,6 +805,18 @@ begin
     ShowMessage('Impossible de détecter si la liste existe.' + #13 +
       'La fonction "liste des canaux" sera désactivée.');
     Result := False
+  end;
+end;
+
+procedure TFMain.UpdateLabel(canal: integer);
+begin
+  with FdataModule do
+  begin
+    queryFonction.SQL.Clear;
+    queryFonction.SQL.Add('select coalesce(label, '''') as label from canaux where id = '
+      + IntToStr(canal) + ';');
+    queryFonction.Open;
+    lblLabel.Caption := queryFonction.FieldByName('label').AsString;
   end;
 end;
 

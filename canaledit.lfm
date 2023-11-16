@@ -1,12 +1,13 @@
 object FCanalEdit: TFCanalEdit
-  Left = 266
+  Left = 814
   Height = 240
-  Top = 325
+  Top = 354
   Width = 277
   Caption = 'Edition canal'
   ClientHeight = 240
   ClientWidth = 277
   OnShow = FormShow
+  Position = poOwnerFormCenter
   ShowHint = True
   LCLVersion = '2.2.6.0'
   object ecanal: TSpinEdit
@@ -23,7 +24,7 @@ object FCanalEdit: TFCanalEdit
     Left = 8
     Height = 17
     Top = 16
-    Width = 119
+    Width = 120
     Caption = 'Numéro du canal :'
     ParentColor = False
   end
@@ -43,7 +44,7 @@ object FCanalEdit: TFCanalEdit
     Left = 8
     Height = 17
     Top = 56
-    Width = 113
+    Width = 114
     Caption = 'Fréquence (Khz) :'
     ParentColor = False
   end
@@ -62,6 +63,7 @@ object FCanalEdit: TFCanalEdit
     Top = 120
     Width = 240
     OnChange = eLabelChange
+    OnDblClick = eLabelDblClick
     TabOrder = 2
     Text = 'eLabel'
   end
@@ -85,7 +87,7 @@ object FCanalEdit: TFCanalEdit
     Left = 8
     Height = 17
     Top = 157
-    Width = 44
+    Width = 45
     Caption = 'Mode :'
     ParentColor = False
   end

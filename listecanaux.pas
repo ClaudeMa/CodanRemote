@@ -6,7 +6,7 @@ interface
 
 uses
   Classes, SysUtils, SQLite3Conn, SQLDB, DB, Forms, Controls,
-  Graphics, Dialogs, ExtCtrls, DBGrids, ZConnection, ZDataset, Grids, Buttons,
+  Graphics, Dialogs, ExtCtrls, DBGrids, ZDataset, Grids, Buttons,
   Menus, StdCtrls, MaskEdit, SpinEx, DataModule, Canaledit, LCLType;
 
 type
@@ -63,7 +63,6 @@ type
     procedure btnEffaceFrequenceClick(Sender: TObject);
     procedure btnEffaceLabelClick(Sender: TObject);
   private
-    dbPath: string;
     mCanal: integer;
     sortField: string;
     sortOrder: string;
@@ -168,8 +167,6 @@ begin
 end;
 
 procedure TFListeCanaux.FormShow(Sender: TObject);
-var
-  newDB: boolean = False;
 begin
   mCanal := 0;
   eFrequence.Clear;

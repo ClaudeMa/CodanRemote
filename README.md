@@ -4,6 +4,8 @@ Utilitaire de pilotage des postes Codan 93xx et autres modèles utilisant le pro
 Conversion des commandes CICS V3 vers CICS V2.1 envoyées par certains logiciels (Winlink express, Winlink tri-mode et Airmail)  
 Conversion des commandes envoyées sur le port "remote" des modems pactor SCS et SWISS-PTCII lorsqu'ils utilisent le mode Codan.
 
+Une liste des canaux permets de trouver facilement les canaux a envoyer au Codan. L'édition de la liste peut se faire par import d'un fichier au format csv ou manuelement. Les canaux peuvent être acquis un par un depuis le Codan et enregistrés dans la liste.
+
 ![ecran_principal](docs/screenshot.png)  
 Écran principal
 

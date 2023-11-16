@@ -11,7 +11,7 @@ uses
   {$ENDIF}
   Interfaces, // this includes the LCL widgetset
   Forms, lazcontrols, main, LazSerialPort, zcomponent, apropos, listecanaux,
-  canaledit, datamodule, importeliste;
+  canaledit, datamodule, importeliste, litcodan;
 
 {$R *.res}
 
@@ -24,6 +24,7 @@ begin
   Application.CreateForm(TFCanalEdit, FCanalEdit);
   Application.CreateForm(TFDataModule, FDataModule);
   Application.CreateForm(TFImporteListe, FImporteListe);
+  Application.CreateForm(TFLitCodan, FLitCodan);
   Application.Run;
 end.
 
