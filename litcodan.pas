@@ -5,9 +5,9 @@ unit litcodan;
 interface
 
 uses
-  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls,
-  Buttons, DBGrids, StdCtrls, Spin, LazSerial, ZDataset, IniFiles, StrUtils,
-  CanalEdit, DB;
+  Classes, SysUtils, Forms, Controls, Graphics, Dialogs, ExtCtrls, Buttons,
+  DBGrids, StdCtrls, Spin, Menus, LazSerial, ZDataset, IniFiles, StrUtils,
+  CanalEdit, DB, DataModule;
 
 type
 
@@ -16,27 +16,37 @@ type
   TFLitCodan = class(TForm)
     btnAquerir: TBitBtn;
     btnFermer: TBitBtn;
+    btnModifie: TBitBtn;
+    btnSupprime: TBitBtn;
     dsCanaux: TDataSource;
     gridListe: TDBGrid;
     Label1: TLabel;
+    mSupprime: TMenuItem;
+    mModifie: TMenuItem;
     Panel1: TPanel;
     Panel2: TPanel;
+    popupGrid: TPopupMenu;
     serCodan: TLazSerial;
     spCanal: TSpinEdit;
     tblCanaux: TZTable;
     procedure btnAquerirClick(Sender: TObject);
     procedure btnFermerClick(Sender: TObject);
+    procedure btnModifieClick(Sender: TObject);
+    procedure btnSupprimeClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var CloseAction: TCloseAction);
     procedure FormCreate(Sender: TObject);
     procedure FormDestroy(Sender: TObject);
     procedure FormShow(Sender: TObject);
+    procedure mModifieClick(Sender: TObject);
+    procedure mSupprimeClick(Sender: TObject);
     procedure spCanalChange(Sender: TObject);
   private
     IniFile: TiniFile;
     CCanal: TCanal;
     FCanalEdit: TFCanalEdit;
     procedure OpenPort;
-
+    procedure Modifie;
+    procedure Supprime;
   public
 
   end;
@@ -66,6 +76,16 @@ end;
 procedure TFLitCodan.FormShow(Sender: TObject);
 begin
   openPort;
+end;
+
+procedure TFLitCodan.mModifieClick(Sender: TObject);
+begin
+  modifie;
+end;
+
+procedure TFLitCodan.mSupprimeClick(Sender: TObject);
+begin
+  supprime;
 end;
 
 procedure TFLitCodan.spCanalChange(Sender: TObject);
@@ -144,6 +164,16 @@ begin
   Close;
 end;
 
+procedure TFLitCodan.btnModifieClick(Sender: TObject);
+begin
+  modifie;
+end;
+
+procedure TFLitCodan.btnSupprimeClick(Sender: TObject);
+begin
+  supprime;
+end;
+
 procedure TFLitCodan.openPort;
 var
   ser: string = '';
@@ -164,6 +194,43 @@ begin
     ShowMessage('Codan non connecté : ' + ser);
     Close;
   end;
+end;
+
+procedure TFLitCodan.modifie;
+var
+  lCanal: Tcanal;
+begin
+  lCanal.Id := tblCanaux.FieldByName('id').AsInteger;
+  lcanal.Freq := tblCanaux.FieldByName('freq').AsFloat;
+  lcanal.Lab := tblCanaux.FieldByName('label').AsString;
+  lCanal.Mode := tblCanaux.FieldByName('mode').AsString;
+  FCanalEdit := TFCanalEdit.Create(self);
+  Fcanaledit.Canal := lCanal;
+  Fcanaledit.ShowModal;
+  Fcanaledit.Free;
+  Refresh;
+end;
+
+procedure TFLitCodan.supprime;
+var
+  lCanal: Tcanal;
+begin
+  lCanal.Id := tblCanaux.FieldByName('id').AsInteger;
+  lcanal.Freq := tblCanaux.FieldByName('freq').AsFloat;
+  lcanal.Lab := tblCanaux.FieldByName('label').AsString;
+  lCanal.Mode := tblCanaux.FieldByName('mode').AsString;
+  if MessageDlg('Question', 'Voulez vous supprimer le canal n°' +
+    IntToStr(lCanal.Id) + '?' + #13, mtConfirmation, [mbYes, mbNo], 0) = mrYes then
+  begin
+    with FdataModule do
+    begin
+      queryFonction.sql.Clear;
+      queryFonction.SQL.Add('DELETE FROM canaux WHERE id = ' +
+        IntToStr(lCanal.id) + ';');
+      queryFonction.ExecSQL;
+    end;
+  end;
+  Refresh;
 end;
 
 end.

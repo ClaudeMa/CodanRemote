@@ -756,6 +756,7 @@ var
   FListeCanaux: TFListeCanaux;
 begin
   FListeCanaux := TFListeCanaux.Create(self);
+  FListeCanaux.Canal := eChan.Value;
   FlisteCanaux.ShowModal;
   if FListeCanaux.Canal > 0 then
   begin

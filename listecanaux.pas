@@ -72,7 +72,7 @@ type
     procedure Selectionne;
     procedure Refresh(where: string = ''; sort: string = '');
   public
-    property Canal: integer read mcanal;
+    property Canal: integer read mCanal write mCanal;
   end;
 
 var
@@ -168,14 +168,18 @@ end;
 
 procedure TFListeCanaux.FormShow(Sender: TObject);
 begin
-  mCanal := 0;
-  eFrequence.Clear;
+    eFrequence.Clear;
   eFrequence.OnChange := @eFrequenceChange;
   eLabel.Clear;
   eLabel.OnChange := @eLabelChange;
   fDataModule.tblCanaux.Open;
   sortField := 'id';
   Refresh;
+  if mCanal <> 0 then
+  begin
+       QueryListe.Locate('id', mCanal, []);
+  end;
+  mCanal := 0;
 end;
 
 procedure TFListeCanaux.gridListeDblClick(Sender: TObject);
@@ -314,7 +318,7 @@ end;
 
 procedure TFListeCanaux.Selectionne;
 begin
-  mCanal := FdataModule.QueryCanaux.FieldByName('id').AsInteger;
+  mCanal := queryListe.FieldByName('id').AsInteger;
   Close;
 end;
 

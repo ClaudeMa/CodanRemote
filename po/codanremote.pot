@@ -1,39 +1,6 @@
 msgid ""
 msgstr "Content-Type: text/plain; charset=UTF-8"
 
-#: tfapropos.caption
-msgid "A propos de CodanRemote"
-msgstr ""
-
-#: tfapropos.label1.caption
-msgctxt "tfapropos.label1.caption"
-msgid "Codan Remote"
-msgstr ""
-
-#: tfapropos.label2.caption
-msgid "F4IKH"
-msgstr ""
-
-#: tfapropos.label3.caption
-msgid "(C) ADRASEC 63"
-msgstr ""
-
-#: tfapropos.label4.caption
-msgid "Licence : GPL/LGPL"
-msgstr ""
-
-#: tfapropos.label6.caption
-msgid "par"
-msgstr ""
-
-#: tfapropos.lblos.caption
-msgid "lblOs"
-msgstr ""
-
-#: tfapropos.lblversion.caption
-msgid "lblVersion"
-msgstr ""
-
 #: tfcanaledit.btnannule.caption
 msgctxt "tfcanaledit.btnannule.caption"
 msgid "Annuler"
@@ -176,6 +143,7 @@ msgid "Modifier"
 msgstr ""
 
 #: tflistecanaux.btnmodifie.hint
+msgctxt "tflistecanaux.btnmodifie.hint"
 msgid "Modifie le canal sélectionné"
 msgstr ""
 
@@ -194,6 +162,7 @@ msgid "Supprimer"
 msgstr ""
 
 #: tflistecanaux.btnsupprime.hint
+msgctxt "tflistecanaux.btnsupprime.hint"
 msgid "Supprime le canal sélectionné"
 msgstr ""
 
@@ -272,6 +241,26 @@ msgctxt "tflitcodan.btnfermer.caption"
 msgid "Fermer"
 msgstr ""
 
+#: tflitcodan.btnmodifie.caption
+msgctxt "tflitcodan.btnmodifie.caption"
+msgid "Modifier"
+msgstr ""
+
+#: tflitcodan.btnmodifie.hint
+msgctxt "tflitcodan.btnmodifie.hint"
+msgid "Modifie le canal sélectionné"
+msgstr ""
+
+#: tflitcodan.btnsupprime.caption
+msgctxt "tflitcodan.btnsupprime.caption"
+msgid "Supprimer"
+msgstr ""
+
+#: tflitcodan.btnsupprime.hint
+msgctxt "tflitcodan.btnsupprime.hint"
+msgid "Supprime le canal sélectionné"
+msgstr ""
+
 #: tflitcodan.caption
 msgid "Acquisition des canaux depuis le Codan"
 msgstr ""
@@ -298,6 +287,16 @@ msgstr ""
 
 #: tflitcodan.label1.caption
 msgid "Démarrer au canal "
+msgstr ""
+
+#: tflitcodan.mmodifie.caption
+msgctxt "tflitcodan.mmodifie.caption"
+msgid "Modifier"
+msgstr ""
+
+#: tflitcodan.msupprime.caption
+msgctxt "tflitcodan.msupprime.caption"
+msgid "Supprimer"
 msgstr ""
 
 #: tfmain.btnchan.hint

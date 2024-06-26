@@ -1,7 +1,7 @@
 object FListeCanaux: TFListeCanaux
-  Left = 230
+  Left = 611
   Height = 448
-  Top = 396
+  Top = 243
   Width = 662
   BorderIcons = [biSystemMenu, biMinimize]
   BorderStyle = bsDialog
@@ -319,7 +319,7 @@ object FListeCanaux: TFListeCanaux
     end
     object eFrequence: TEdit
       Left = 208
-      Height = 24
+      Height = 25
       Top = 8
       Width = 152
       OnEnter = eFrequenceEnter
@@ -329,7 +329,7 @@ object FListeCanaux: TFListeCanaux
     end
     object eLabel: TEdit
       Left = 208
-      Height = 24
+      Height = 25
       Top = 48
       Width = 152
       OnEnter = eLabelEnter
@@ -439,8 +439,8 @@ object FListeCanaux: TFListeCanaux
     end
   end
   object mPopup: TPopupMenu
-    Left = 40
-    Top = 160
+    Left = 24
+    Top = 320
     object mAjout: TMenuItem
       Caption = 'Ajouter'
       OnClick = mAjoutClick
