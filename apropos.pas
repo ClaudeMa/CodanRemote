@@ -20,6 +20,7 @@ type
     Label3: TLabel;
     Label4: TLabel;
     eVersion: TLabel;
+    Label5: TLabel;
     lblOs: TLabel;
     Label6: TLabel;
     lblVersion: TLabel;
